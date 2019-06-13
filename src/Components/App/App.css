@@ -10,13 +10,13 @@
   text-align: center;
   font-size: 21px;
   background-color: var(--primary);
-  color: white;
+  color: var(--primary-accent);
   border-bottom: 1px solid var(--primary-accent);
 }
 
 .app-main {
   display: flex;
-  height: calc(100vh - 33px);
+  min-height: calc(100vh - 33px);
   background-color: var(--background);
 }
 
@@ -35,12 +35,28 @@
   width: 100%;
   padding-left: 10px;
   text-decoration: none;
-  color: white;
+  color: var(--secondary-accent);
   display: flex;
   align-items: center;
+  /* -webkit-transition:  border-width 3s;
+  -moz-transition:  border-width 3s;
+  -o-transition:  border-width 3s;
+  -ms-transition: border-width 3s;
+  transition: border-width 3s;  */
 }
 
 .app-nav-link:hover {
-  border: 1px solid var(--secondary-accent);
-  border-right-width: 0px;
+  border-left: 1px solid var(--secondary-accent);
+  border-top: 1px solid var(--secondary-accent);
+  border-bottom: 1px solid var(--secondary-accent);
+  color: white;
+  padding-left: 9px;
+}
+
+.app-nav-link-selected {
+  border-right: 4px solid var(--secondary-accent);
+}
+
+.app-content {
+  width: 100%;
 }

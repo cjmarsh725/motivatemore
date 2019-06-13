@@ -10,13 +10,25 @@ const App = () => {
   return (
     <Router>
       <div className="app">
-        <div className="app-header">MM</div>
+        <div className="app-header">MotivateMore</div>
         <div className="app-main">
           <div className="app-nav">
-              <NavLink className="app-nav-link" to="/">Home</NavLink>
-              <NavLink className="app-nav-link" to="/journal">Journal</NavLink>
-              <NavLink className="app-nav-link" to="/schedule">Schedule</NavLink>
-              <NavLink className="app-nav-link" to="/affirmation">Affirmation</NavLink>
+              <NavLink className="app-nav-link" 
+                      activeClassName="app-nav-link-selected" 
+                      onlyActiveOnIndex
+                      to="/" exact>Home</NavLink>
+              <NavLink className="app-nav-link" 
+                      activeClassName="app-nav-link-selected" 
+                      onlyActiveOnIndex
+                      to="/journal">Journal</NavLink>
+              <NavLink className="app-nav-link" 
+                      activeClassName="app-nav-link-selected" 
+                      onlyActiveOnIndex
+                      to="/schedule">Schedule</NavLink>
+              <NavLink className="app-nav-link" 
+                      activeClassName="app-nav-link-selected" 
+                      onlyActiveOnIndex
+                      to="/affirmation">Affirmation</NavLink>
           </div>
           <div className="app-content">
             <Switch>
