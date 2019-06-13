@@ -3,7 +3,11 @@ import './JournalSidebar.css';
 
 const JournalSidebar = () => {
   return (
-    <div className="journalsidebar-container">JournalSidebar</div>
+    <div className="journalsidebar-container">
+      
+      <i className="fa fa-folder"></i>
+      <div>Entries</div>
+    </div>
   );
 }
 
