@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom';
 import './App.css';
 import Home from '../Home/Home';
 import Journal from '../Journal/Journal';
@@ -10,22 +10,22 @@ const App = () => {
   return (
     <Router>
       <div className="app">
-        <div>App</div>
-        <div className="app-nav">
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/journal">Journal</Link></li>
-            <li><Link to="/schedule">Schedule</Link></li>
-            <li><Link to="/affirmation">Affirmation</Link></li>
-          </ul>
-        </div>
-        <div className="app-content">
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/journal" component={Journal}/>
-            <Route path="/schedule" component={Schedule}/>
-            <Route path="/affirmation" component={Affirmation}/>
-          </Switch>
+        <div className="app-header">MM</div>
+        <div className="app-main">
+          <div className="app-nav">
+              <NavLink className="app-nav-link" to="/">Home</NavLink>
+              <NavLink className="app-nav-link" to="/journal">Journal</NavLink>
+              <NavLink className="app-nav-link" to="/schedule">Schedule</NavLink>
+              <NavLink className="app-nav-link" to="/affirmation">Affirmation</NavLink>
+          </div>
+          <div className="app-content">
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route path="/journal" component={Journal}/>
+              <Route path="/schedule" component={Schedule}/>
+              <Route path="/affirmation" component={Affirmation}/>
+            </Switch>
+          </div>
         </div>
       </div>
     </Router>
