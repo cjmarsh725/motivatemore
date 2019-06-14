@@ -1,12 +1,11 @@
 import React from 'react';
 import './JournalSidebar.css';
+import JournalTreeNode from '../JournalTreeNode/JournalTreeNode';
 
-const JournalSidebar = () => {
+const JournalSidebar = props => {
   return (
     <div className="journalsidebar-container">
-      
-      <i className="fa fa-folder"></i>
-      <div>Entries</div>
+      {props.fileStructure.map(node => <JournalTreeNode {...node} />)}
     </div>
   );
 }
