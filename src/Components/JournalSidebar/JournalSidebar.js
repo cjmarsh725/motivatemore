@@ -8,7 +8,8 @@ const JournalSidebar = props => {
       {props.getRootNodes().map(node => {
         return (<JournalTreeNode {...node} key={node.path}
           getChildNodes={props.getChildNodes}
-          toggleNode={props.toggleNode} />
+          toggleNode={props.toggleNode}
+          openFile={props.openFile} />
         )})}
     </div>
   );

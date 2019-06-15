@@ -14,7 +14,10 @@ const getIcon = (isFolder, isOpen) => {
 const JournalTreeNode = props => {
   return (
     <div className="journaltreenode-container">
-      <div className="journaltreenode-bg" onClick={() => props.toggleNode(props.path)}>
+      <div className="journaltreenode-bg" onClick={() => {
+          props.toggleNode(props.path);
+          if (!props.isFolder) props.openFile(props.path);
+        }}>
         <div className="journaltreenode-label no-select" style={{marginLeft: props.indent * 10 + "px"}}>
           <div className="journaltreennode-icon">
             {getIcon(props.isFolder, props.isOpen)}
@@ -25,7 +28,8 @@ const JournalTreeNode = props => {
       {props.isOpen ? props.getChildNodes(props.path).map(node => {
         return (<JournalTreeNode {...node} key={node.path}
           getChildNodes={props.getChildNodes} 
-          toggleNode={props.toggleNode} />
+          toggleNode={props.toggleNode}
+          openFile={props.openFile} />
       )}) : null}
     </div>
   );

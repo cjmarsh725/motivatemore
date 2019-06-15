@@ -71,11 +71,7 @@ class Journal extends Component {
   toggleNode = path => {
     const { fileStructure } = this.state;
     const node = fileStructure[path];
-    node.isOpen = !node.isOpen;
-    if (node.children) node.children.forEach(nodePath => {
-      if (!fileStructure[nodePath].isFolder)
-        fileStructure[nodePath].isOpen = node.isOpen;
-    });
+    if (node.isFolder) node.isOpen = !node.isOpen;
     this.setState({ fileStructure });
   }
 
@@ -87,17 +83,37 @@ class Journal extends Component {
     }
   }
 
+  getContent = () => {
+    if (this.state.fileStructure[this.state.currentFile]) {
+      return this.state.fileStructure[this.state.currentFile].content;
+    }
+  }
+
+  openFile = path => {
+    const { fileStructure } = this.state;
+    const node = fileStructure[path];
+    if (node) {
+      const prevNode = values(fileStructure)
+          .find(n => n.isFolder === false && n.isOpen === true);
+      if (prevNode) fileStructure[prevNode.path].isOpen = false;
+      node.isOpen = true;
+      this.setState({ fileStructure: fileStructure, currentFile: path });
+    }
+  }
+
   render() {
     return (
       <div className="journal-container">
         <JournalEditor
             updateContent={this.updateContent}
-            currentFile={this.state.currentFile} />
+            currentFile={this.state.currentFile}
+            content={this.getContent()} />
         <JournalSidebar 
             fileStructure={this.state.fileStructure}
             getRootNodes={this.getRootNodes}
             getChildNodes={this.getChildNodes}
             toggleNode={this.toggleNode}
+            openFile={this.openFile}
             />
       </div>
     );
