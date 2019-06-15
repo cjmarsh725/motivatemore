@@ -3,23 +3,30 @@ import './JournalTreeNode.css';
 
 const getIcon = (isFolder, isOpen) => {
   if (isFolder) {
-    if (isOpen) return <i className="fa fa-folder-open"></i>;
-    else return <i className="fa fa-folder"></i>;
+    if (isOpen) return <i className="fas fa-folder-open"></i>;
+    else return <i className="fas fa-folder"></i>;
   } else {
-    if (isOpen) return <i className="far fa-file"></i>;
-    else return <i className="fa fa-file"></i>;
+    if (isOpen) return <i className="fas fa-file-alt"></i>;
+    else return <i className="fas fa-file"></i>;
   }
 }
 
 const JournalTreeNode = props => {
   return (
     <div className="journaltreenode-container">
-      <div className="journaltreenode-label" style={{marginLeft: props.indent * 10 + "px"}}>
-        <div className="journaltreennode-icon">
-          {getIcon(props.isFolder, props.isOpen)}
+      <div className="journaltreenode-bg" onClick={() => props.toggleNode(props.path)}>
+        <div className="journaltreenode-label no-select" style={{marginLeft: props.indent * 10 + "px"}}>
+          <div className="journaltreennode-icon">
+            {getIcon(props.isFolder, props.isOpen)}
+          </div>
+          <div>{props.title}</div>
         </div>
-        <div>{props.title}</div>
       </div>
+      {props.isOpen ? props.getChildNodes(props.path).map(node => {
+        return (<JournalTreeNode {...node} 
+          getChildNodes={props.getChildNodes} 
+          toggleNode={props.toggleNode} />
+      )}) : null}
     </div>
   );
 }
