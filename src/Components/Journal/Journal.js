@@ -52,7 +52,8 @@ class Journal extends Component {
         path: "/SubEntries/TestEntry3",
         content: "This is a third test entry."
       }
-    }
+    },
+    currentFile: null
   }
 
   getRootNodes = () => {
@@ -72,15 +73,26 @@ class Journal extends Component {
     const node = fileStructure[path];
     node.isOpen = !node.isOpen;
     if (node.children) node.children.forEach(nodePath => {
-      fileStructure[nodePath].isOpen = node.isOpen;
+      if (!fileStructure[nodePath].isFolder)
+        fileStructure[nodePath].isOpen = node.isOpen;
     });
     this.setState({ fileStructure });
+  }
+
+  updateContent = newContent => {
+    if (this.state.currentFile) {
+      const { fileStructure } = this.state;
+      fileStructure[this.state.currentFile].content = newContent;
+      this.setState({ fileStructure });
+    }
   }
 
   render() {
     return (
       <div className="journal-container">
-        <JournalEditor />
+        <JournalEditor
+            updateContent={this.updateContent}
+            currentFile={this.state.currentFile} />
         <JournalSidebar 
             fileStructure={this.state.fileStructure}
             getRootNodes={this.getRootNodes}

@@ -14,21 +14,17 @@ const App = () => {
         <div className="app-main">
           <div className="app-nav">
               <NavLink className="app-nav-link" 
-                      activeClassName="app-nav-link-selected" 
-                      onlyActiveOnIndex
+                      activeClassName="app-nav-link-selected"
                       to="/" exact>Home</NavLink>
               <NavLink className="app-nav-link" 
-                      activeClassName="app-nav-link-selected" 
-                      onlyActiveOnIndex
-                      to="/journal">Journal</NavLink>
+                      activeClassName="app-nav-link-selected"
+                      to="/journal" exact>Journal</NavLink>
               <NavLink className="app-nav-link" 
-                      activeClassName="app-nav-link-selected" 
-                      onlyActiveOnIndex
-                      to="/schedule">Schedule</NavLink>
+                      activeClassName="app-nav-link-selected"
+                      to="/schedule" exact>Schedule</NavLink>
               <NavLink className="app-nav-link" 
-                      activeClassName="app-nav-link-selected" 
-                      onlyActiveOnIndex
-                      to="/affirmation">Affirmation</NavLink>
+                      activeClassName="app-nav-link-selected"
+                      to="/affirmation" exact>Affirmation</NavLink>
           </div>
           <div className="app-content">
             <Switch>
