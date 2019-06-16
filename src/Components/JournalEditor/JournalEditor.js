@@ -5,29 +5,21 @@ import './JournalEditor.css';
 
 class JournalEditor extends Component {
   sanitizeConf = {
-    allowedTags: ["b", "i", "em", "strong", "a", "p", "h1"],
+    allowedTags: ["b", "i", "em", "strong", "a", "p", "h1", "br", "div"],
     allowedAttributes: { a: ["href"] }
   }
 
-  handleChange = e => {
-    this.props.updateContent(e.target.value);
-  }
-
-  sanitize = () => {
-    console.log(sanitizeHtml(this.props.content, this.sanitizeConf));
-    this.props.updateContent(sanitizeHtml(this.props.content, this.sanitizeConf));
+  handleInput = e => {
+    this.props.updateContent(sanitizeHtml(e.target.innerHTML, this.sanitizeConf));
   }
 
   render() {
     return (
       <div className="journaleditor-container">
-        {this.props.currentFile ?
-        <ContentEditable
-          className="editor"
-          html={this.props.content}
-          onChange={this.handleChange}
-          onBlur={this.sanitize} />
-        : null}
+        <div className="journaleditor-html"
+            dangerouslySetInnerHTML={{__html: this.props.content}}
+            contentEditable="true"
+            onInput={this.handleInput}></div>
       </div>
     );
   }
