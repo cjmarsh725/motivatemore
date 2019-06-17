@@ -4,6 +4,10 @@ import './JournalEditor.css';
 import ReactQuill from 'react-quill';
 
 class JournalEditor extends Component {
+  attachRef = ref => {
+    ref.getEditor().root.setAttribute("spellcheck", false);
+  }
+
   handleChange = value => {
     this.props.updateContent(value);
   }
@@ -12,10 +16,11 @@ class JournalEditor extends Component {
     return (
       <div className="journaleditor-container">
         {this.props.currentFile ?
-        <ReactQuill value={this.props.content || ""}
+        <ReactQuill placeholder="Start here..."
+                ref={this.attachRef}
+                value={this.props.content || ""}
                 onChange={this.handleChange}
-                modules={JournalEditor.modules}
-                style={{borderColor: "#8A7D73"}} />
+                modules={JournalEditor.modules} />
         : null}
       </div>
     );
