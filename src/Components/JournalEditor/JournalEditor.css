@@ -3,5 +3,9 @@
   align-self: stretch;
   box-sizing: border-box;
   padding: 20px;
-  white-space: pre-wrap;
+  white-space: pre;
+}
+
+.ql-toolbar.ql-snow, .ql-container.ql-snow {
+  border-color: var(--background-accent);
 }

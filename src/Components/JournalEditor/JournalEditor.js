@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import 'react-quill/dist/quill.snow.css';
 import './JournalEditor.css';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 
 class JournalEditor extends Component {
   handleChange = value => {
@@ -13,10 +13,18 @@ class JournalEditor extends Component {
       <div className="journaleditor-container">
         {this.props.currentFile ?
         <ReactQuill value={this.props.content || ""}
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+                modules={JournalEditor.modules}
+                style={{borderColor: "#8A7D73"}} />
         : null}
       </div>
     );
+  }
+}
+
+JournalEditor.modules = {
+  clipboard: {
+    matchVisual: false
   }
 }
 
