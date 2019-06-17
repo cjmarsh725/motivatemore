@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Journal.css';
 import values from 'lodash/values';
-import { EditorState } from 'draft-js';
 import JournalEditor from '../JournalEditor/JournalEditor';
 import JournalSidebar from '../JournalSidebar/JournalSidebar';
 
@@ -24,7 +23,7 @@ class Journal extends Component {
         isOpen: false,
         indent: 1,
         path: "/Entries/TestEntry",
-        editorState: EditorState.createEmpty()
+        content: null
       }, 
       "/Entries/TestEntry2": {
         title: "TestEntry2",
@@ -33,7 +32,7 @@ class Journal extends Component {
         isOpen: false,
         indent: 1,
         path: "/Entries/TestEntry2",
-        editorState: EditorState.createEmpty()
+        content: null
       },
       "/SubEntries": {
         title: "SubEntries",
@@ -51,7 +50,7 @@ class Journal extends Component {
         isOpen: false,
         indent: 2,
         path: "/SubEntries/TestEntry3",
-        editorState: EditorState.createEmpty()
+        content: null
       }
     },
     currentFile: null
@@ -76,17 +75,17 @@ class Journal extends Component {
     this.setState({ fileStructure });
   }
 
-  updateEditor = editorState => {
+  updateContent = content => {
     if (this.state.currentFile) {
       const { fileStructure } = this.state;
-      fileStructure[this.state.currentFile].editorState = editorState;
+      fileStructure[this.state.currentFile].content = content;
       this.setState({ fileStructure });
     }
   }
 
-  getEditorState = () => {
+  getContent = () => {
     if (this.state.fileStructure[this.state.currentFile]) {
-      return this.state.fileStructure[this.state.currentFile].editorState;
+      return this.state.fileStructure[this.state.currentFile].content;
     }
   }
 
@@ -106,9 +105,9 @@ class Journal extends Component {
     return (
       <div className="journal-container">
         <JournalEditor
-            updateEditor={this.updateEditor}
+            updateContent={this.updateContent}
             currentFile={this.state.currentFile}
-            editorState={this.getEditorState()} />
+            content={this.getContent()} />
         <JournalSidebar 
             fileStructure={this.state.fileStructure}
             getRootNodes={this.getRootNodes}

@@ -3,4 +3,5 @@
   align-self: stretch;
   box-sizing: border-box;
   padding: 20px;
+  white-space: pre-wrap;
 }
