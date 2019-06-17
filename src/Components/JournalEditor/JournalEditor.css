@@ -1,4 +1,6 @@
 .journaleditor-container {
   width: 100%;
   align-self: stretch;
+  box-sizing: border-box;
+  padding: 20px;
 }
