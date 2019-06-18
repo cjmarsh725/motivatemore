@@ -10,9 +10,9 @@ const App = () => {
   return (
     <Router>
       <div className="app">
-        <div className="app-header">MotivateMore</div>
+        <div className="app-header no-select">MotivateMore</div>
         <div className="app-main">
-          <div className="app-nav">
+          <div className="app-nav no-select">
               <NavLink className="app-nav-link" 
                       activeClassName="app-nav-link-selected"
                       to="/" exact>Home</NavLink>

@@ -5,7 +5,7 @@ import ReactQuill from 'react-quill';
 
 class JournalEditor extends Component {
   attachRef = ref => {
-    ref.getEditor().root.setAttribute("spellcheck", false);
+    if (ref) ref.getEditor().root.setAttribute("spellcheck", false);
   }
 
   handleChange = value => {
@@ -16,7 +16,7 @@ class JournalEditor extends Component {
     return (
       <div className="journaleditor-container">
         {this.props.currentFile ? ( <>
-        <div className="journaleditor-header">
+        <div className="journaleditor-header no-select">
           <div className="journaleditor-entryname">{this.props.fileName}</div>
           <div className="journaleditor-trash">
             <i class="fas fa-trash"></i>

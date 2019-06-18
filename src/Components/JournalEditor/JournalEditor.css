@@ -18,6 +18,10 @@
   font-size: 21px;
 }
 
+.journaleditor-trash {
+  cursor: pointer;
+}
+
 .ql-toolbar.ql-snow, .ql-container.ql-snow {
   border-color: var(--background-accent);
 }
