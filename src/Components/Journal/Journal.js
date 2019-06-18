@@ -11,7 +11,7 @@ class Journal extends Component {
         title: "Entries",
         isRoot: true,
         isFolder: true,
-        isOpen: false,
+        isOpen: true,
         indent: 0,
         path: "/Entries",
         children: ["/SubEntries", "/Entries/TestEntry", "/Entries/TestEntry2"]
@@ -20,7 +20,7 @@ class Journal extends Component {
         title: "TestEntry",
         isRoot: false,
         isFolder: false,
-        isOpen: false,
+        isOpen: true,
         indent: 1,
         path: "/Entries/TestEntry",
         content: null
@@ -53,7 +53,7 @@ class Journal extends Component {
         content: null
       }
     },
-    currentFile: null
+    currentFile: "/Entries/TestEntry"
   }
 
   getRootNodes = () => {
@@ -89,6 +89,12 @@ class Journal extends Component {
     }
   }
 
+  getFileName = () => {
+    if (this.state.fileStructure[this.state.currentFile]) {
+      return this.state.fileStructure[this.state.currentFile].title;
+    }
+  }
+
   openFile = path => {
     const { fileStructure } = this.state;
     const node = fileStructure[path];
@@ -107,7 +113,8 @@ class Journal extends Component {
         <JournalEditor
             updateContent={this.updateContent}
             currentFile={this.state.currentFile}
-            content={this.getContent()} />
+            content={this.getContent()}
+            fileName={this.getFileName()} />
         <JournalSidebar 
             fileStructure={this.state.fileStructure}
             getRootNodes={this.getRootNodes}

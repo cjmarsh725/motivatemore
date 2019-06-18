@@ -6,6 +6,18 @@
   white-space: pre;
 }
 
+.journaleditor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--secondary);
+  margin-bottom: 6px;
+}
+
+.journaleditor-entryname {
+  font-size: 21px;
+}
+
 .ql-toolbar.ql-snow, .ql-container.ql-snow {
   border-color: var(--background-accent);
 }

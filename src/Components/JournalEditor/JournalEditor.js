@@ -15,13 +15,19 @@ class JournalEditor extends Component {
   render() {
     return (
       <div className="journaleditor-container">
-        {this.props.currentFile ?
+        {this.props.currentFile ? ( <>
+        <div className="journaleditor-header">
+          <div className="journaleditor-entryname">{this.props.fileName}</div>
+          <div className="journaleditor-trash">
+            <i class="fas fa-trash"></i>
+          </div>
+        </div>
         <ReactQuill placeholder="Start here..."
                 ref={this.attachRef}
                 value={this.props.content || ""}
                 onChange={this.handleChange}
                 modules={JournalEditor.modules} />
-        : null}
+        </>) : null}
       </div>
     );
   }
