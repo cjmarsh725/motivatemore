@@ -24,6 +24,7 @@ class JournalEditor extends Component {
 
   render() {
     return (
+      <>
       <div className="journaleditor-container">
         {this.props.currentFile ? ( <>
         <div className="journaleditor-header no-select">
@@ -41,12 +42,13 @@ class JournalEditor extends Component {
                 onChange={this.handleChange}
                 modules={{clipboard: {matchVisual: false}}} />
         </>) : null}
-        <Modal 
-            isOpen={this.state.isDeleteOpen} 
-            toggle={this.toggleDeleteModal}>
-          <DeleteEntryModal />
-        </Modal>
       </div>
+      <Modal 
+          isOpen={this.state.isDeleteOpen} 
+          toggle={this.toggleDeleteModal}>
+        <DeleteEntryModal />
+      </Modal>
+      </>
     );
   }
 }
