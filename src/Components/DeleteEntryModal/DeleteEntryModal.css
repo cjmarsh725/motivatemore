@@ -1,0 +1,11 @@
+.deleteentrymodal-container {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  left: 10%;
+  right: 10%;
+}
+
+.deleteentrymodal-title {
+  font-weight: bold;
+}
