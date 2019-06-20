@@ -107,12 +107,28 @@ class Journal extends Component {
     }
   }
 
+  deleteFile = path => {
+    const { fileStructure } = this.state;
+    const node = fileStructure[path];
+    if (node) {
+      const parent = fileStructure[
+        node.path.replace("/" + node.title, "")
+      ];
+      if (parent) {
+        parent.children = parent.children.filter(child => child.path !== path);
+      }
+      delete fileStructure[path];
+      this.setState({ fileStructure: fileStructure, currentFile: null });
+    }
+  }
+
   render() {
     return (
       <div className="journal-container">
         <JournalEditor
             updateContent={this.updateContent}
             currentFile={this.state.currentFile}
+            deleteFile={this.deleteFile}
             content={this.getContent()}
             fileName={this.getFileName()} />
         <JournalSidebar 

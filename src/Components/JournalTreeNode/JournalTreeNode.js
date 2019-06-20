@@ -26,6 +26,7 @@ const JournalTreeNode = props => {
         </div>
       </div>
       {props.isOpen ? props.getChildNodes(props.path).map(node => {
+        if (node === undefined) return null;
         return (<JournalTreeNode {...node} key={node.path}
           getChildNodes={props.getChildNodes} 
           toggleNode={props.toggleNode}

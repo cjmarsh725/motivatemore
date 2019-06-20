@@ -33,7 +33,7 @@ class JournalEditor extends Component {
           </div>
           <div className="journaleditor-trash" 
                 onClick={this.toggleDeleteModal}>
-            <i class="fas fa-trash"></i>
+            <i className="fas fa-trash"></i>
           </div>
         </div>
         <ReactQuill placeholder="Start here..."
@@ -46,7 +46,10 @@ class JournalEditor extends Component {
       <Modal 
           isOpen={this.state.isDeleteOpen} 
           toggle={this.toggleDeleteModal}>
-        <DeleteEntryModal />
+        <DeleteEntryModal
+            deleteFile={this.props.deleteFile}
+            currentFile={this.props.currentFile}
+            toggle={this.toggleDeleteModal} />
       </Modal>
       </>
     );

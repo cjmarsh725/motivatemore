@@ -16,6 +16,7 @@
 }
 
 .deleteentrymodal-delete-btn {
+  cursor: pointer;
   margin-right: 20px;
   padding: 5px 10px 5px 10px;
   color: var(--secondary);
@@ -24,6 +25,7 @@
 }
 
 .deleteentrymodal-cancel-btn {
+  cursor: pointer;
   box-sizing: border-box;
   padding: 5px 10px 5px 10px;
   border: 1px solid var(--secondary-accent);

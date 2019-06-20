@@ -6,7 +6,7 @@ const JournalSidebar = props => {
   return (
     <div className="journalsidebar-container">
       <div className="journalsidebar-add-btn">
-        <i class="fas fa-plus fa-2x"></i>
+        <i className="fas fa-plus fa-2x"></i>
       </div>
       {props.getRootNodes().map(node => {
         return (<JournalTreeNode {...node} key={node.path}
